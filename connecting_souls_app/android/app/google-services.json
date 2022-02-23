@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "182962485729",
+    "project_id": "connecting-souls-86c3c",
+    "storage_bucket": "connecting-souls-86c3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:182962485729:android:b14fd2f5b2613d27ae7aa0",
+        "android_client_info": {
+          "package_name": "com.example.connecting_souls_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "182962485729-ic7hff4377uo07n44n9lckqjhq9b4ra9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8iamLFSC4mvdp1dUPuEHhi1UXuUY0EdY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "182962485729-ic7hff4377uo07n44n9lckqjhq9b4ra9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

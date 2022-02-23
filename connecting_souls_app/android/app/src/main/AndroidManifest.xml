@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.connecting_souls_app">
+
    <application
         android:label="connecting_souls_app"
         android:name="${applicationName}"

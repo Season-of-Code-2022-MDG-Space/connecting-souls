@@ -7,7 +7,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(1080, 1920),
+      designSize: const Size(412, 732),
       builder: () => MaterialApp(
         home: Drawer(
           child: CustomPaint(
