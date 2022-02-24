@@ -1,3 +1,4 @@
+import 'package:connecting_souls_app/UI/custom_canvas_paint.dart';
 import 'package:connecting_souls_app/utils/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +16,7 @@ class LoginScreen extends StatelessWidget {
           designSize: const Size(412, 732),
           builder: () => Drawer(
             child: CustomPaint(
-              painter: AppBarPainter(),
+              painter: LoginAppBarPainter(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -61,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                         final provider =
                             Provider.of<MyGoogleSignIn>(context, listen: false);
                         await provider.googleLogin();
-                        Navigator.pushReplacementNamed(context, '/');
+                        Navigator.pushReplacementNamed(context, '/home');
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
@@ -102,28 +103,5 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class AppBarPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    var paint = Paint();
-    paint.color = const Color.fromARGB(500, 151, 227, 154);
-    paint.style = PaintingStyle.fill;
-
-    var path = Path();
-    path.moveTo(0, size.height * 0.54);
-    path.quadraticBezierTo(
-        size.width * 0.32, size.height * 0.65, size.width, size.height * 0.51);
-    path.lineTo(size.width, 0);
-    path.lineTo(0, 0);
-
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return true;
   }
 }

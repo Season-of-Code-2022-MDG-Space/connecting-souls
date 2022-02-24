@@ -68,6 +68,7 @@ flutter:
   assets:
     - assets/1.png
     - assets/2.png
+    - assets/3.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -87,6 +88,9 @@ flutter:
     - family: Roboto
       fonts:
         - asset: fonts/Roboto/Roboto-Regular.ttf
+    - family: Pompiere
+      fonts:
+        - asset: fonts/Pompiere/Pompiere-Regular.ttf
 
 
   # For details regarding fonts from package dependencies,
