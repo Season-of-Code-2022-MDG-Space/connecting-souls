@@ -1,11 +1,26 @@
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-class Authentication {
-  static Future<FirebaseApp> initializeFirebase() async {
-    FirebaseApp firebaseApp = await Firebase.initializeApp();
+class MyGoogleSignIn extends ChangeNotifier {
+  final signIn = GoogleSignIn();
 
-    // TODO: Add auto login logic
+  GoogleSignInAccount? _user;
+  GoogleSignInAccount get user => _user!;
 
-    return firebaseApp;
+  Future googleLogin() async {
+    final googleUser = await GoogleSignIn().signIn();
+    if (googleUser != null) {
+      _user = googleUser;
+    }
+
+    final googleAuth = await googleUser!.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+
+    await FirebaseAuth.instance.signInWithCredential(credential);
+
+    notifyListeners();
   }
 }
