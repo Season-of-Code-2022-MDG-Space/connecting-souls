@@ -38,12 +38,16 @@ class HomeScreen extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  SizedBox(height: 35.h,),
+                  SizedBox(
+                    height: 35.h,
+                  ),
                   Image.asset(
                     'assets/3.png',
                     width: 305.w,
                   ),
-                  SizedBox(height: 35.h,),
+                  SizedBox(
+                    height: 35.h,
+                  ),
                   SizedBox(
                     width: 302.w,
                     height: 45.h,
@@ -69,7 +73,9 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15.h,),
+                  SizedBox(
+                    height: 15.h,
+                  ),
                   SizedBox(
                     width: 302.w,
                     height: 45.h,
@@ -79,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                         backgroundColor: MaterialStateProperty.all(
                             const Color.fromARGB(500, 151, 227, 154)),
                         shape:
-                        MaterialStateProperty.all<RoundedRectangleBorder>(
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.w),
                           ),

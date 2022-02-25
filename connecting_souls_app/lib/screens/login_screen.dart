@@ -62,7 +62,11 @@ class LoginScreen extends StatelessWidget {
                         final provider =
                             Provider.of<MyGoogleSignIn>(context, listen: false);
                         await provider.googleLogin();
-                        Navigator.pushReplacementNamed(context, '/home');
+                        if (provider.verify == true) {
+                          Navigator.pushReplacementNamed(context, '/home');
+                        } else {
+                          Navigator.pushReplacementNamed(context, '/error');
+                        }
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
