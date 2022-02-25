@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class MyGoogleSignIn extends ChangeNotifier {
   final signIn = GoogleSignIn();
@@ -15,7 +16,14 @@ class MyGoogleSignIn extends ChangeNotifier {
       _user = googleUser;
       verify = true;
     }
-    await googleUser!.authentication;
+    final googleAuth = await googleUser!.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken
+    );
+
+    await FirebaseAuth.instance.signInWithCredential(credential);
 
     notifyListeners();
   }
