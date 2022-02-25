@@ -1,45 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:connecting_souls_app/UI/custom_canvas_paint.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:connecting_souls_app/utils/authentication.dart';
+import 'package:provider/provider.dart';
 
 class ErrorScreen extends StatelessWidget {
   const ErrorScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-        designSize: const Size(412, 732),
-        builder: () => Drawer(
-                child: CustomPaint(
+    return ChangeNotifierProvider(
+        create: (context) => MyGoogleSignIn(),
+        child: Builder(
+          builder: (context) => Drawer(
+            child: CustomPaint(
               painter: AppBarPainter(),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     'Oops! Try using a valid IITR email ID!',
                     style: TextStyle(
-                      fontSize: 55.0,
+                      fontSize: 55.sp,
                       fontFamily: 'Pompiere',
                       fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: 30.h,
                   ),
-                  const Icon(
+                  Icon(
                     Icons.report_gmailerrorred_sharp,
-                    size: 100,
+                    size: 100.w,
                   ),
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: 30.h,
                   ),
                   SizedBox(
                     width: 302.w,
                     height: 45.h,
                     child: TextButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        final provider =
+                            Provider.of<MyGoogleSignIn>(context, listen: false);
+                        await provider.googleLogout();
                         Navigator.pushReplacementNamed(context, '/');
                       },
                       style: ButtonStyle(
@@ -64,7 +70,9 @@ class ErrorScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            )));
+            ),
+          ),
+        ));
     //const Text();
   }
 }
