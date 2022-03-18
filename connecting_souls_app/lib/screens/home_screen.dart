@@ -28,10 +28,10 @@ class HomeScreen extends StatelessWidget {
                     actions: [
                       PopupMenuButton(
                           padding: EdgeInsets.symmetric(
-                              vertical: 0, horizontal: 35.w),
-                          icon: Icon(
-                            Icons.person,
-                            size: 40.w,
+                              vertical: 0, horizontal: 25.w),
+                          icon: CircleAvatar(
+                            radius: 20.r,
+                            backgroundImage: NetworkImage(user.photoURL!),
                           ),
                           itemBuilder: (context) => [
                                 PopupMenuItem(
