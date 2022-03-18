@@ -17,13 +17,14 @@ class MyGoogleSignIn extends ChangeNotifier {
       verify = true;
     }
     final googleAuth = await googleUser!.authentication;
+    if (verify == true) {
+      final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
 
-    final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+      await FirebaseAuth.instance.signInWithCredential(credential);
 
-    await FirebaseAuth.instance.signInWithCredential(credential);
-
-    notifyListeners();
+      notifyListeners();
+    }
   }
 
   Future googleLogout() async {

@@ -5,25 +5,40 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Name'),
         backgroundColor: const Color.fromARGB(450, 80, 163, 72),
       ),
-      body: Container(),
-      bottomNavigationBar:
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          TextField(
-          decoration: InputDecoration(),
-          ),
-          Icon(
-            Icons.send,
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: size.height * (12 / 15),
+              width: size.width,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: size.height / 15,
+                  width: size.width / 1.2,
+                  child: TextField(
+                    //controller: _message,
+                    decoration: InputDecoration(
+                        hintText: "Message",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        )),
+                  ),
+                ),
+                IconButton(icon: const Icon(Icons.send), onPressed: () {}),
+              ],
+            ),
+          ],
+        ),
       ),
-
     );
   }
 }

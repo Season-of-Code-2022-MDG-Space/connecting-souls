@@ -33,6 +33,7 @@ class HomeScreen extends StatelessWidget {
                             radius: 20.r,
                             backgroundImage: NetworkImage(user.photoURL!),
                           ),
+                          iconSize: 40.r,
                           itemBuilder: (context) => [
                                 PopupMenuItem(
                                   child: Center(
