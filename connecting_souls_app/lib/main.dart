@@ -5,6 +5,8 @@ import 'package:connecting_souls_app/screens/home_screen.dart';
 import 'package:connecting_souls_app/screens/error_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:connecting_souls_app/screens/chat_screen.dart';
+import 'package:connecting_souls_app/screens/chat_list_screen.dart';
+import 'package:connecting_souls_app/screens/requests_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +19,8 @@ Future main() async {
               '/home': (context) => const HomeScreen(),
               '/error': (context) => const ErrorScreen(),
               '/chat': (context) => const ChatScreen(),
+              '/list': (context) => const ChatListScreen(),
+              '/requests': (context) => const RequestsScreen(),
             },
           )));
 }
