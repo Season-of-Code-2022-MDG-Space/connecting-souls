@@ -7,37 +7,34 @@ class friendscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-        child: CustomPaint(
-            painter: AppBarPainter(),
-            child: Column(children: [
+    return Scaffold( appBar: AppBar(
+    leading: IconButton(
+    onPressed: () {
+      Navigator.pushReplacementNamed(context, '/home');
+    },
+    icon: const Icon(Icons.arrow_back),
+    ),
+
+    foregroundColor: const Color.fromARGB(450, 23, 22, 22),
+    backgroundColor: const Color.fromARGB(500, 151, 227, 154),
+
+    title:( Text(
+    'Find Friends',
+    textAlign: TextAlign.center,
+    style: TextStyle(
+    fontSize: 26.sp,
+    fontFamily: 'Poppins',
+      fontWeight: FontWeight.bold
+
+    ),
+    ))),
+
+
+              body: Center(child: Column(
+              children: [
+
               SizedBox(
-                height: 55.h,
-              ),
-              Row(children: [
-                SizedBox(
-                  width: 48.w,
-                ),
-                Text(
-                  'Find Friends',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 30.sp,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                  width: 20.w,
-                ),
-                Image.asset(
-                  'assets/6.png',
-                  width: 53.w,
-                  height: 57.h,
-                ),
-              ]),
-              SizedBox(
-                height: 140.h,
+                height: 100.h,
               ),
               Image.asset(
                 'assets/7.png',
@@ -45,7 +42,7 @@ class friendscreen extends StatelessWidget {
                 width: 309.w,
               ),
               SizedBox(
-                height: 50.h,
+                height: 100.h,
               ),
               SizedBox(
                   height: 48.h,
@@ -96,6 +93,6 @@ class friendscreen extends StatelessWidget {
                             color: const Color.fromARGB(450, 23, 22, 22),
                             fontWeight: FontWeight.normal),
                       )))
-            ])));
+              ])));
   }
 }

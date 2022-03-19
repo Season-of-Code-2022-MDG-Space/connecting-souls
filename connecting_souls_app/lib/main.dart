@@ -1,3 +1,5 @@
+
+
 import 'package:connecting_souls_app/screens/Aboutus.dart';
 import 'package:connecting_souls_app/screens/Instructions.dart';
 import 'package:connecting_souls_app/screens/booker.dart';
@@ -20,9 +22,15 @@ Future main() async {
       designSize: const Size(412, 732),
       builder: () => MaterialApp(
             routes: {
-              '/': (context) => booker(),
+              '/': (context) => HomeScreen(),
               '/home': (context) => const HomeScreen(),
               '/error': (context) => const ErrorScreen(),
+              '/friends': (context) => const friendscreen(),
+              '/welcome': (context) => const WelcomeScreen(),
+              '/aboutus': (context) => const Aboutus(),
+              '/swipe': (context) => PageViewDemo(),
+              '/book' : (context) => const booker(),
+
             },
           )));
 }

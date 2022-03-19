@@ -7,37 +7,32 @@ class MyPage2Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-        child: CustomPaint(
-            painter: AppBarPainter(),
-            child: Column(children: [
+    return Scaffold( appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, '/welcome');
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
+
+        foregroundColor: const Color.fromARGB(450, 23, 22, 22),
+        backgroundColor: const Color.fromARGB(500, 151, 227, 154),
+
+        title:( Text(
+          'Know Your Counsellor',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: 26.sp,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold
+
+          ),
+        ))),
+
+        body:Center(child:Column (children: [
+
               SizedBox(
-                height: 55.h,
-              ),
-              Row(children: [
-                SizedBox(
-                  width: 48.w,
-                ),
-                Text(
-                  'Know Your \nCounsellors',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 30.sp,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                  width: 20.w,
-                ),
-                Image.asset(
-                  'assets/10.png',
-                  width: 60.w,
-                  height: 60.h,
-                ),
-              ]),
-              SizedBox(
-                height: 80.h,
+                height: 40.h,
               ),
               Image.asset(
                 'assets/page2.png',
@@ -51,7 +46,7 @@ class MyPage2Widget extends StatelessWidget {
                 'Mr. Ashfak Ahamed PC',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontSize: 24.sp,
+                    fontSize: 20.sp,
                     fontFamily: 'Roboto',
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(450, 64, 128, 86)),
@@ -59,26 +54,35 @@ class MyPage2Widget extends StatelessWidget {
               SizedBox(
                 height: 30.h,
               ),
-              SizedBox(
-                  width: 309.w,
-                  height: 109.h,
-                  child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black, // red as border color
-                        ),
-                      ),
-                      child: Text(
-                        'Speciality: Addiction, positive psychology, health psychology, stress management'
-                        'Availability: Mon to Fri ',
+
+                   Text(
+                        'Speciality: Addiction, positive psychology, health psychology, stress management',
+                        textAlign: TextAlign.center,
+
                         style: TextStyle(
                           fontSize: 16.sp,
                           fontFamily: 'Roboto',
                           fontWeight: FontWeight.normal,
+
                         ),
-                      ))),
+                      ),
+          SizedBox(
+            height: 8.h,
+          ),
+
+          Text(
+            'Availibility: Mon to Fri',
+            textAlign: TextAlign.center,
+
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.bold,
+
+            ),
+          ),
               SizedBox(
-                height: 30.h,
+                height: 60.h,
               ),
               SizedBox(
                   width: 309.w,
@@ -86,7 +90,7 @@ class MyPage2Widget extends StatelessWidget {
                   child: Container(
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Colors.black, // red as border color
+                          color: Color.fromARGB(450, 74, 163, 72), // red as border color
                         ),
                       ),
                       child: Text(
@@ -98,6 +102,15 @@ class MyPage2Widget extends StatelessWidget {
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.normal,
                           )))),
+          SizedBox(
+            height: 40.h,
+          ),
+          Image.asset(
+            'assets/13.png',
+            height: 12.h,
+            width: 68.w,
+          ),
+
             ])));
   }
 }

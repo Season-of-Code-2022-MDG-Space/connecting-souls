@@ -1,6 +1,10 @@
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:connecting_souls_app/UI/custom_canvas_paint.dart';
+
 
 class booker extends StatefulWidget {
   const booker({Key? key}) : super(key: key);
@@ -13,8 +17,22 @@ class _bookerState extends State<booker> {
   String dropdownValue =
       '        Chose a mode of counselling                       ';
 
+
+  final databaseRef = FirebaseDatabase.instance.reference();
+  final Future<FirebaseApp> _future = Firebase.initializeApp();
+  void addData(String data ) {
+
+
+
+    databaseRef.push().set({'mode': data,'comment': 'hi'});
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
+    String counsellor;
+
     return Drawer(
         child: CustomPaint(
             painter: AppBarPainter(),
@@ -61,7 +79,9 @@ class _bookerState extends State<booker> {
               ),
               Row(children: [
                 TextButton(
-                    onPressed: () => {},
+                    onPressed: () => {
+                       counsellor = "Dr Shikha Jain"
+                    },
                     child: SizedBox(
                         width: 99.w,
                         height: 135.h,
@@ -90,7 +110,9 @@ class _bookerState extends State<booker> {
                               )
                             ])))),
                 TextButton(
-                    onPressed: () => {},
+                    onPressed: () => {
+                      counsellor = 'Mr Ashfek Ahmed Pc'
+                    },
                     child: SizedBox(
                         width: 99.w,
                         height: 135.h,
@@ -119,7 +141,9 @@ class _bookerState extends State<booker> {
                               )
                             ])))),
                 TextButton(
-                    onPressed: () => {},
+                    onPressed: () => {
+                      counsellor = 'Mr.Mohit Cnandra'
+                    },
                     child: SizedBox(
                         width: 99.w,
                         height: 135.h,
@@ -242,11 +266,15 @@ class _bookerState extends State<booker> {
               SizedBox(
                 height: 70.h,
               ),
+
               SizedBox(
                   height: 40.h,
                   width: 194.w,
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed:() {
+
+                        addData(dropdownValue);
+                      },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
                             const Color.fromARGB(500, 151, 227, 154)),

@@ -41,6 +41,7 @@ dependencies:
   firebase_auth: ^3.3.7
   google_sign_in: ^5.2.4
   provider: ^6.0.2
+  firebase_database: ^9.0.8
 
 dev_dependencies:
   flutter_test:
@@ -82,6 +83,9 @@ flutter:
     - assets/page2.png
     - assets/page3.png
     - assets/11.png
+    - assets/12.png
+    - assets/13.png
+    - assets/14.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:connecting_souls_app/UI/custom_canvas_paint.dart';
@@ -7,35 +8,38 @@ class Aboutus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-        child: CustomPaint(
-            painter: AppBarPainter(),
-            child: Column(children: [
-              SizedBox(
-                height: 55.h,
-              ),
-              Row(children: [
-                SizedBox(
-                  width: 48.w,
-                ),
-                Text(
-                  'ABOUT US',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 30.sp,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                  width: 28.w,
-                ),
-                Image.asset(
-                  'assets/5.png',
-                  width: 53.w,
-                  height: 57.h,
-                ),
-              ]),
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, '/welcome');
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
+
+          foregroundColor: const Color.fromARGB(450, 23, 22, 22),
+          backgroundColor: const Color.fromARGB(500, 151, 227, 154),
+
+          title:(Row(children: [ Text(
+            'About Us',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 26.sp,
+              fontFamily: 'Poppins',
+
+            ),
+          ),
+
+            SizedBox(
+              width: 20.w,
+            ),
+            Icon(Icons.remove_red_eye),
+      ]))),
+              body: Center(
+                child:Column(
+                  children: [
+
+
               SizedBox(
                 height: 88.h,
               ),
