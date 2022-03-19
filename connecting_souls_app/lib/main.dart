@@ -22,7 +22,7 @@ Future main() async {
       designSize: const Size(412, 732),
       builder: () => MaterialApp(
             routes: {
-              '/': (context) => HomeScreen(),
+              '/': (context) => booker(),
               '/home': (context) => const HomeScreen(),
               '/error': (context) => const ErrorScreen(),
               '/friends': (context) => const friendscreen(),
