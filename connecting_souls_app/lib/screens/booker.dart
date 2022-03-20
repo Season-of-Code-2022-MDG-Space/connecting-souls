@@ -265,6 +265,7 @@ class _bookerState extends State<booker> {
 
 
                         addData(counsellor1,textcontroller.text,dropdownValue,time,provider.email1);
+                        Navigator.pushReplacementNamed(context, '/success');
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
