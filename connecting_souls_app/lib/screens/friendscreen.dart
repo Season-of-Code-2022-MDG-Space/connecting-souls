@@ -37,12 +37,12 @@ class friendscreen extends StatelessWidget {
                 height: 100.h,
               ),
               Image.asset(
-                'assets/7.png',
-                height: 238.h,
-                width: 309.w,
+                'assets/friend.png',
+                height: 294.h,
+                width: 328.w,
               ),
               SizedBox(
-                height: 100.h,
+                height: 50.h,
               ),
               SizedBox(
                   height: 48.h,
