@@ -97,7 +97,9 @@ class HomeScreen extends StatelessWidget {
                           width: 302.w,
                           height: 45.h,
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushReplacementNamed(context, '/list');
+                            },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
                                   const Color.fromARGB(500, 151, 227, 154)),

@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:connecting_souls_app/utils/chat_id_generator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:connecting_souls_app/screens/chat_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ChatListScreen extends StatelessWidget {
+class ChatListScreen extends StatefulWidget {
   const ChatListScreen({Key? key}) : super(key: key);
 
   @override
+  State<ChatListScreen> createState() => _ChatListScreenState();
+}
+
+class _ChatListScreenState extends State<ChatListScreen> {
+  Map<String, dynamic>? userMap;
+  final user = FirebaseAuth.instance.currentUser!;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  @override
   Widget build(BuildContext context) {
-    List chats = [
-      'chat 1',
-      'chat 2',
-      'chat 3',
-      'chat 4',
-      'chat 5',
-      'chat 6',
-      'chat 7',
-      'chat 8'
-    ];
+    List chats = ['Test Chat'];
 
     return Builder(
         builder: (context) => Scaffold(
@@ -22,7 +27,7 @@ class ChatListScreen extends StatelessWidget {
               backgroundColor: const Color.fromARGB(500, 80, 163, 72),
               leading: IconButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/');
+                  Navigator.pushReplacementNamed(context, '/home');
                 },
                 icon: const Icon(
                   Icons.arrow_back,
@@ -31,9 +36,9 @@ class ChatListScreen extends StatelessWidget {
               title: const Text('Chat Screen'),
               actions: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 8.0,
-                    horizontal: 6.0,
+                  padding: EdgeInsets.symmetric(
+                    vertical: 8.h,
+                    horizontal: 6.w,
                   ),
                   child: ElevatedButton(
                     onPressed: () {
@@ -44,7 +49,7 @@ class ChatListScreen extends StatelessWidget {
                           const Color.fromARGB(500, 255, 255, 255)),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10.r),
                         ),
                       ),
                     ),
@@ -63,25 +68,46 @@ class ChatListScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: chats
                     .map((chat) => InkWell(
-                          onTap: () {},
+                          onTap: () async {
+                            await _firestore
+                                .collection('users')
+                                .where("name", isNotEqualTo: user.displayName)
+                                .get()
+                                .then((value) {
+                              setState(() {
+                                userMap = value.docs[0].data();
+                              });
+                            });
+                            String thisChatId = chatID(
+                                user.email.toString(), userMap!['email']);
+
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) => ChatScreen(
+                                  chatID: thisChatId,
+                                  userMap: userMap!,
+                                ),
+                              ),
+                            );
+                          },
                           child: Card(
                             child: Padding(
-                              padding: const EdgeInsets.all(15),
+                              padding: EdgeInsets.all(15.r),
                               child: Row(
                                 children: [
                                   Image.asset(
                                     'assets/4.png',
-                                    width: 45,
+                                    width: 45.w,
                                   ),
-                                  const SizedBox(width: 15),
+                                  SizedBox(width: 15.w),
                                   Text(
                                     chat,
-                                    style: const TextStyle(
-                                      fontSize: 25,
+                                    style: TextStyle(
+                                      fontSize: 25.sp,
                                     ),
                                   ),
-                                  const SizedBox(width: 185),
-                                  const Text('12:00 am'),
+                                  SizedBox(width: 145.w),
+                                  const Text('12:00am'),
                                 ],
                               ),
                             ),
