@@ -1,4 +1,5 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ import '../utils/authentication.dart';
 
 class booker extends StatefulWidget {
   const booker({Key? key}) : super(key: key);
+
 
   @override
   State<booker> createState() => _bookerState();
@@ -40,6 +42,7 @@ class _bookerState extends State<booker> {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
     return Scaffold( appBar: AppBar(
         leading: IconButton(
           onPressed: () {
@@ -258,13 +261,10 @@ class _bookerState extends State<booker> {
                   height: 40.h,
                   width: 194.w,
                   child: TextButton(
-                      onPressed:() async {
-                        final provider =
-                        Provider.of<MyGoogleSignIn>(context, listen: false);
-                        await provider.googleLogin();
+                      onPressed:()  {
 
 
-                        addData(counsellor1,textcontroller.text,dropdownValue,time,provider.email1);
+                        addData(counsellor1,textcontroller.text,dropdownValue,time,user.email.toString());
                         Navigator.pushReplacementNamed(context, '/success');
                       },
                       style: ButtonStyle(
