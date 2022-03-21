@@ -7,6 +7,7 @@ class MyGoogleSignIn extends ChangeNotifier {
   final signIn = GoogleSignIn();
 
   bool verify = false;
+  late String email1;
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -23,6 +24,7 @@ class MyGoogleSignIn extends ChangeNotifier {
         "code": 'Anonymous #' + _user!.id.substring(0, 6),
       });
       verify = true;
+      email1 = googleUser.email;
     }
     final googleAuth = await googleUser!.authentication;
     if (verify == true) {
