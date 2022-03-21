@@ -105,6 +105,8 @@ class _ChatListScreenState extends State<ChatListScreen> {
                                     padding: EdgeInsets.symmetric(
                                         vertical: 10.h, horizontal: 8.w),
                                     child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Image.asset(
                                           'assets/4.png',
@@ -126,17 +128,10 @@ class _ChatListScreenState extends State<ChatListScreen> {
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 ),
-                                                Text(
-                                                  'Last message',
-                                                  style: TextStyle(
-                                                    fontSize: 12.sp,
-                                                  ),
-                                                )
                                               ],
                                             ),
                                           ),
                                         ),
-                                        const Text('12:00am'),
                                       ],
                                     ),
                                   ),
