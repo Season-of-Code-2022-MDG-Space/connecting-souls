@@ -35,7 +35,7 @@ class _bookerState extends State<booker> {
 
 
 
-    databaseRef.push().set({'email':data1,'counsellor': data3,'date': data,'mode': data2,'time': data4});
+    databaseRef.push().set({'email':data1,'counsellor': data,'date': data2,'mode': data3,'time': data4});
   }
 
 
