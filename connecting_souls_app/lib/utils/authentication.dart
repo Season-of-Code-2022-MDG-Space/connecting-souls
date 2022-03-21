@@ -16,7 +16,7 @@ class MyGoogleSignIn extends ChangeNotifier {
 
   Future googleLogin() async {
     final googleUser = await GoogleSignIn().signIn();
-    if (googleUser != null /*&& googleUser.email.contains('iitr.ac.in')*/) {
+    if (googleUser != null && googleUser.email.contains('iitr.ac.in')) {
       _user = googleUser;
       await _firestore.collection('users').doc(_user!.id).set({
         "name": _user!.displayName,

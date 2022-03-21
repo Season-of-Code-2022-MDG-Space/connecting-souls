@@ -9,7 +9,9 @@ class Instructions extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             leading: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/friends');
+              },
               icon: const Icon(Icons.arrow_back),
             ),
             foregroundColor: const Color.fromARGB(450, 23, 22, 22),
@@ -59,7 +61,7 @@ class Instructions extends StatelessWidget {
               width: 264.w,
               child: TextButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/');
+                    Navigator.pushReplacementNamed(context, '/list');
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(

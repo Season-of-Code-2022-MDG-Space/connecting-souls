@@ -39,7 +39,7 @@ class _BookerState extends State<Booker> {
         appBar: AppBar(
             leading: IconButton(
               onPressed: () {
-                Navigator.pushReplacementNamed(context, '/home');
+                Navigator.pushReplacementNamed(context, '/welcome');
               },
               icon: const Icon(Icons.arrow_back),
             ),
@@ -53,222 +53,224 @@ class _BookerState extends State<Booker> {
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.bold),
             ))),
-        body: Center(
-            child: Column(children: [
-          SizedBox(
-            height: 50.h,
-          ),
-          Text(
-            'Chose your counsellor',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20.sp,
-              fontFamily: 'Roboto',
-              fontWeight: FontWeight.bold,
+        body: SingleChildScrollView(
+          child: Center(
+              child: Column(children: [
+            SizedBox(
+              height: 50.h,
             ),
-          ),
-          SizedBox(
-            height: 15.h,
-          ),
-          SizedBox(
-              width: 325.w,
-              height: 44.h,
-              child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.w),
-                    border: Border.all(
-                      color: Colors.green, // red as border color
-                    ),
-                  ),
-                  child: DropdownButton<String>(
-                    isExpanded: true,
-                    value: counsellor1,
-                    icon: const Icon(Icons.arrow_downward),
-                    elevation: 16,
-                    style: const TextStyle(color: Colors.black),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        counsellor1 = newValue!;
-                      });
-                    },
-                    items: <String>[
-                      '        Chose your Counsellor                                   ',
-                      'Dr. Shikha Jain',
-                      'Mr. Ashfak Ahamed PC',
-                      'Mr. Mohit Chandr'
-                    ].map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ))),
-          SizedBox(
-            height: 20.h,
-          ),
-          Text(
-            'Mode of Counselling',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20.sp,
-              fontFamily: 'Roboto',
-              fontWeight: FontWeight.bold,
+            Text(
+              'Chose your counsellor',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20.sp,
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          SizedBox(
-            height: 15.h,
-          ),
-          SizedBox(
-              width: 325.w,
-              height: 44.h,
-              child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.w),
-                    border: Border.all(
-                      color: Colors.green, // red as border color
-                    ),
-                  ),
-                  child: DropdownButton<String>(
-                    isExpanded: true,
-                    value: dropdownValue,
-                    icon: const Icon(Icons.arrow_downward),
-                    elevation: 16,
-                    style: const TextStyle(color: Colors.black),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        dropdownValue = newValue!;
-                      });
-                    },
-                    items: <String>[
-                      '        Chose a mode of counselling                       ',
-                      'Face-to-Face',
-                      'Online',
-                      'Telephonic'
-                    ].map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ))),
-          SizedBox(
-            height: 20.h,
-          ),
-          Text(
-            'Chose date',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20.sp,
-              fontFamily: 'Roboto',
-              fontWeight: FontWeight.bold,
+            SizedBox(
+              height: 15.h,
             ),
-          ),
-          SizedBox(
-            height: 15.h,
-          ),
-          SizedBox(
-            height: 44.h,
-            width: 325.w,
-            child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.w),
-                  border: Border.all(
-                    color: Colors.green, // red as border color
-                  ),
-                ),
-                child: TextField(
-                  controller: textcontroller,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: '    dd-mm-yy',
-                  ),
-                )),
-          ),
-          SizedBox(
-            height: 20.h,
-          ),
-          Text(
-            'Chose Time',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20.sp,
-              fontFamily: 'Roboto',
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(
-            height: 15.h,
-          ),
-          SizedBox(
-              width: 325.w,
-              height: 44.h,
-              child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.w),
-                    border: Border.all(
-                      color: Colors.green, // red as border color
-                    ),
-                  ),
-                  child: DropdownButton<String>(
-                    isExpanded: true,
-                    value: time,
-                    icon: const Icon(Icons.arrow_downward),
-                    elevation: 16,
-                    style: const TextStyle(color: Colors.black),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        time = newValue!;
-                      });
-                    },
-                    items: <String>[
-                      '           Chose Time                                                 ',
-                      '9 A.M.',
-                      '10 A.M.',
-                      '12 P.M.',
-                      '2 P.M.',
-                      '3 P.M.',
-                      '4 P.M.'
-                    ].map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ))),
-          SizedBox(
-            height: 30.h,
-          ),
-          SizedBox(
-              height: 40.h,
-              width: 194.w,
-              child: TextButton(
-                  onPressed: () {
-                    addData(
-                      user.email.toString(),
-                      counsellor1,
-                      textcontroller.text,
-                      dropdownValue,
-                      time,
-                    );
-                    Navigator.pushReplacementNamed(context, '/success');
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
-                        const Color.fromARGB(500, 151, 227, 154)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.w),
+            SizedBox(
+                width: 325.w,
+                height: 44.h,
+                child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.w),
+                      border: Border.all(
+                        color: Colors.green, // red as border color
                       ),
                     ),
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      value: counsellor1,
+                      icon: const Icon(Icons.arrow_downward),
+                      elevation: 16,
+                      style: const TextStyle(color: Colors.black),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          counsellor1 = newValue!;
+                        });
+                      },
+                      items: <String>[
+                        '        Chose your Counsellor                                   ',
+                        'Dr. Shikha Jain',
+                        'Mr. Ashfak Ahamed PC',
+                        'Mr. Mohit Chandr'
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ))),
+            SizedBox(
+              height: 20.h,
+            ),
+            Text(
+              'Mode of Counselling',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20.sp,
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: 15.h,
+            ),
+            SizedBox(
+                width: 325.w,
+                height: 44.h,
+                child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.w),
+                      border: Border.all(
+                        color: Colors.green, // red as border color
+                      ),
+                    ),
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      value: dropdownValue,
+                      icon: const Icon(Icons.arrow_downward),
+                      elevation: 16,
+                      style: const TextStyle(color: Colors.black),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          dropdownValue = newValue!;
+                        });
+                      },
+                      items: <String>[
+                        '        Chose a mode of counselling                       ',
+                        'Face-to-Face',
+                        'Online',
+                        'Telephonic'
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ))),
+            SizedBox(
+              height: 20.h,
+            ),
+            Text(
+              'Chose date',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20.sp,
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: 15.h,
+            ),
+            SizedBox(
+              height: 44.h,
+              width: 325.w,
+              child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.w),
+                    border: Border.all(
+                      color: Colors.green, // red as border color
+                    ),
                   ),
-                  child: Text(
-                    'Book Appointment',
-                    style: TextStyle(
-                        fontSize: 14.sp,
-                        fontFamily: 'Roboto',
-                        color: const Color.fromARGB(450, 23, 22, 22),
-                        fontWeight: FontWeight.bold),
-                  )))
-        ])));
+                  child: TextField(
+                    controller: textcontroller,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: '    dd-mm-yy',
+                    ),
+                  )),
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            Text(
+              'Chose Time',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20.sp,
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: 15.h,
+            ),
+            SizedBox(
+                width: 325.w,
+                height: 44.h,
+                child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.w),
+                      border: Border.all(
+                        color: Colors.green, // red as border color
+                      ),
+                    ),
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      value: time,
+                      icon: const Icon(Icons.arrow_downward),
+                      elevation: 16,
+                      style: const TextStyle(color: Colors.black),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          time = newValue!;
+                        });
+                      },
+                      items: <String>[
+                        '           Chose Time                                                 ',
+                        '9 A.M.',
+                        '10 A.M.',
+                        '12 P.M.',
+                        '2 P.M.',
+                        '3 P.M.',
+                        '4 P.M.'
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ))),
+            SizedBox(
+              height: 30.h,
+            ),
+            SizedBox(
+                height: 40.h,
+                width: 194.w,
+                child: TextButton(
+                    onPressed: () {
+                      addData(
+                        user.email.toString(),
+                        counsellor1,
+                        textcontroller.text,
+                        dropdownValue,
+                        time,
+                      );
+                      Navigator.pushReplacementNamed(context, '/success');
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                          const Color.fromARGB(500, 151, 227, 154)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.w),
+                        ),
+                      ),
+                    ),
+                    child: Text(
+                      'Book Appointment',
+                      style: TextStyle(
+                          fontSize: 14.sp,
+                          fontFamily: 'Roboto',
+                          color: const Color.fromARGB(450, 23, 22, 22),
+                          fontWeight: FontWeight.bold),
+                    )))
+          ])),
+        ));
   }
 }
