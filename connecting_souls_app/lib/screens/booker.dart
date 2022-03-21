@@ -253,7 +253,7 @@ class _bookerState extends State<booker> {
                         }).toList(),
                       ))),
               SizedBox(
-                height: 35.h,
+                height: 30.h,
               ),
 
 
@@ -264,7 +264,7 @@ class _bookerState extends State<booker> {
                       onPressed:()  {
 
 
-                        addData(counsellor1,textcontroller.text,dropdownValue,time,user.email.toString());
+                        addData(user.email.toString(),counsellor1,textcontroller.text,dropdownValue,time,);
                         Navigator.pushReplacementNamed(context, '/success');
                       },
                       style: ButtonStyle(
