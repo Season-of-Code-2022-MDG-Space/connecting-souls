@@ -19,8 +19,6 @@ class _ChatListScreenState extends State<ChatListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List chats = ['Test Chat'];
-
     return Builder(
         builder: (context) => Scaffold(
             appBar: AppBar(
@@ -64,57 +62,90 @@ class _ChatListScreenState extends State<ChatListScreen> {
               ],
             ),
             body: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: chats
-                    .map((chat) => InkWell(
-                          onTap: () async {
-                            await _firestore
-                                .collection('users')
-                                .where("name", isNotEqualTo: user.displayName)
-                                .get()
-                                .then((value) {
-                              setState(() {
-                                userMap = value.docs[0].data();
-                              });
-                            });
-                            String thisChatId = chatID(
-                                user.email.toString(), userMap!['email']);
-
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (_) => ChatScreen(
-                                  chatID: thisChatId,
-                                  userMap: userMap!,
-                                ),
-                              ),
-                            );
-                          },
-                          child: Card(
-                            child: Padding(
-                              padding: EdgeInsets.all(15.r),
-                              child: Row(
-                                children: [
-                                  Image.asset(
-                                    'assets/4.png',
-                                    width: 45.w,
-                                  ),
-                                  SizedBox(width: 15.w),
-                                  Text(
-                                    chat,
-                                    style: TextStyle(
-                                      fontSize: 25.sp,
+                child: StreamBuilder<QuerySnapshot>(
+                    stream: _firestore
+                        .collection('users')
+                        .where('email', isNotEqualTo: user.email)
+                        .snapshots(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (snapshot.data != null) {
+                        return ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: snapshot.data!.docs.length,
+                            itemBuilder: (context, index) {
+                              Map<String, dynamic> myUserMap =
+                                  snapshot.data!.docs[index].data()
+                                      as Map<String, dynamic>;
+                              return InkWell(
+                                onTap: () async {
+                                  await _firestore
+                                      .collection('users')
+                                      .where("email",
+                                          isEqualTo: myUserMap["email"])
+                                      .get()
+                                      .then((value) {
+                                    setState(() {
+                                      userMap = value.docs[0].data();
+                                    });
+                                  });
+                                  String thisChatId = chatID(
+                                      user.email.toString(), userMap!['email']);
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (_) => ChatScreen(
+                                        chatID: thisChatId,
+                                        userMap: userMap!,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Card(
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 10.h, horizontal: 8.w),
+                                    child: Row(
+                                      children: [
+                                        Image.asset(
+                                          'assets/4.png',
+                                          width: 45.w,
+                                        ),
+                                        SizedBox(
+                                          width: 280.w,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 10.w),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  myUserMap['code'],
+                                                  style: TextStyle(
+                                                    fontSize: 23.sp,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Last message',
+                                                  style: TextStyle(
+                                                    fontSize: 12.sp,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        const Text('12:00am'),
+                                      ],
                                     ),
                                   ),
-                                  SizedBox(width: 145.w),
-                                  const Text('12:00am'),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ))
-                    .toList(),
-              ),
-            )));
+                                ),
+                              );
+                            });
+                      } else {
+                        return const Text('Error');
+                      }
+                    }))));
   }
 }

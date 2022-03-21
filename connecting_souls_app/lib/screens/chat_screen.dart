@@ -56,10 +56,9 @@ class ChatScreen extends StatelessWidget {
                                       snapshot.data!.docs[index].data()
                                           as Map<String, dynamic>;
                                   return Container(
-                                    alignment:
-                                        myMap['sentBy'] == user.displayName
-                                            ? Alignment.centerRight
-                                            : Alignment.centerLeft,
+                                    alignment: myMap['sentBy'] == user.email
+                                        ? Alignment.centerRight
+                                        : Alignment.centerLeft,
                                     child: Container(
                                         padding: EdgeInsets.symmetric(
                                             vertical: 10.h, horizontal: 8.w),
@@ -68,8 +67,7 @@ class ChatScreen extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(5.r),
-                                          color: myMap['sentBy'] ==
-                                                  user.displayName
+                                          color: myMap['sentBy'] == user.email
                                               ? const Color.fromARGB(
                                                   500, 151, 227, 154)
                                               : const Color.fromARGB(
@@ -109,7 +107,7 @@ class ChatScreen extends StatelessWidget {
                                 decoration: InputDecoration(
                                   hintText: "Message",
                                   border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8.r),
+                                      borderRadius: BorderRadius.circular(35.r),
                                       borderSide: const BorderSide(
                                           color: Color.fromARGB(
                                               500, 151, 227, 154),
@@ -126,7 +124,7 @@ class ChatScreen extends StatelessWidget {
                                       .doc(chatID)
                                       .collection('chats')
                                       .add({
-                                    "sentBy": user.displayName,
+                                    "sentBy": user.email,
                                     "text": currentMessage.text,
                                     "time": FieldValue.serverTimestamp(),
                                   });

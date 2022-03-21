@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class RequestsScreen extends StatelessWidget {
+class RequestsScreen extends StatefulWidget {
   const RequestsScreen({Key? key}) : super(key: key);
 
+  @override
+  State<RequestsScreen> createState() => _RequestsScreenState();
+}
+
+class _RequestsScreenState extends State<RequestsScreen> {
   @override
   Widget build(BuildContext context) {
     List requests = [
@@ -53,7 +58,11 @@ class RequestsScreen extends StatelessWidget {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   OutlinedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      setState(() {
+                                        requests.remove(request);
+                                      });
+                                    },
                                     child: const Text('Accept'),
                                     style: ButtonStyle(
                                       side: MaterialStateProperty.all(
@@ -74,7 +83,11 @@ class RequestsScreen extends StatelessWidget {
                                     ),
                                   ),
                                   OutlinedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      setState(() {
+                                        requests.remove(request);
+                                      });
+                                    },
                                     child: const Text('Decline'),
                                     style: ButtonStyle(
                                       side: MaterialStateProperty.all(
