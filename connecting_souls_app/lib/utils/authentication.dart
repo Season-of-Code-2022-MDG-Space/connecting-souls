@@ -8,11 +8,8 @@ class MyGoogleSignIn extends ChangeNotifier {
   bool verify = false;
   late String email1;
 
-
   GoogleSignInAccount? _user;
   GoogleSignInAccount get user => _user!;
-
-
 
   Future googleLogin() async {
     final googleUser = await GoogleSignIn().signIn();
