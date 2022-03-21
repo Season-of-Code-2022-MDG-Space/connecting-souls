@@ -74,7 +74,9 @@ class friendscreen extends StatelessWidget {
                   height: 48.h,
                   width: 264.w,
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, '/instructions');
+                      },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
                             const Color.fromARGB(500, 151, 227, 154)),

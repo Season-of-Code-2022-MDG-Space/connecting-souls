@@ -34,6 +34,8 @@ Future main() async {
               '/swipe': (context) => PageViewDemo(),
               '/book' : (context) => const booker(),
               '/success':(context)=> const success(),
+              '/instructions':(context)=> const instructions(),
+
 
             },
           )));
