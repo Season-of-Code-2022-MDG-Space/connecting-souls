@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/connecting_souls.iml" filepath="$PROJECT_DIR$/connecting_souls.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/connecting_souls_app_android.iml" filepath="$PROJECT_DIR$/android/connecting_souls_app_android.iml" />
+    </modules>
+  </component>
+</project>
