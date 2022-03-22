@@ -25,9 +25,9 @@ class _BookerState extends State<Booker> {
       String data1, String data, String data2, String data3, String data4) {
     databaseRef.push().set({
       'email': data1,
-      'counsellor': data3,
-      'date': data,
-      'mode': data2,
+      'counsellor': data,
+      'date': data2,
+      'mode': data3,
       'time': data4
     });
   }
